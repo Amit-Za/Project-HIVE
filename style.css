@@ -19,6 +19,10 @@ body {
   overflow: hidden;
 }
 
+body.locked main.story {
+  overflow: hidden;
+}
+
 main.story {
   position: relative;
   height: 100vh;
@@ -177,22 +181,28 @@ main.story {
 }
 
 .pulse-ticker {
-  display: flex;
-  gap: 24px;
-  justify-content: center;
+  width: min(420px, 80vw);
+  margin: 0 auto 24px;
+  overflow: hidden;
+  position: relative;
+  height: 18px;
+}
+
+.pulse-track {
+  display: inline-flex;
+  gap: 28px;
   align-items: center;
   font-size: 13px;
   letter-spacing: 0.3em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
-  margin-bottom: 24px;
-  animation: ticker 16s linear infinite;
-  overflow: hidden;
-  max-width: 560px;
+  color: rgba(255, 255, 255, 0.6);
+  animation: ticker 12s linear infinite;
+  will-change: transform;
 }
 
-.pulse-ticker span {
+.pulse-track span {
   white-space: nowrap;
+  opacity: 0.8;
 }
 
 .appear,

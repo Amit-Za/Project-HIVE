@@ -2,15 +2,27 @@ const scrollButtons = document.querySelectorAll('[data-scroll-target]')
 const sections = document.querySelectorAll('.screen')
 const progressButtons = document.querySelectorAll('.progress-indicator button')
 const form = document.getElementById('contactForm')
+const heroCta = document.querySelector('.hero .cta')
 
 scrollButtons.forEach(btn => {
   btn.addEventListener('click', () => {
+    if (document.body.classList.contains('locked') && btn === heroCta) {
+      document.body.classList.remove('locked')
+    }
     const target = document.querySelector(btn.dataset.scrollTarget)
     if (target) {
       target.scrollIntoView({ behavior: 'smooth' })
     }
   })
 })
+
+if (heroCta) {
+  heroCta.addEventListener('click', () => {
+    if (document.body.classList.contains('locked')) {
+      document.body.classList.remove('locked')
+    }
+  })
+}
 
 const observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
